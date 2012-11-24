@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Venue:</b>
+  <%= @chatroom.venue_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @chatroom.name %>
+</p>
+
+<p>
+  <b>Is available:</b>
+  <%= @chatroom.is_available %>
+</p>
+
+
+<%= link_to 'Edit', edit_chatroom_path(@chatroom) %> |
+<%= link_to 'Back', chatrooms_path %>

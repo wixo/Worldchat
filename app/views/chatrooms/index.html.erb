@@ -1,0 +1,33 @@
+<h1>Listing chatrooms</h1>
+
+<table>
+  <tr>
+    <th>Venue</th>
+    <th>Name</th>
+    <th>Is available</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @chatrooms.each do |chatroom| %>
+  <tr>
+    <td><%= chatroom.venue_id %></td>
+    <td><%= chatroom.name %></td>
+    <td><%= chatroom.is_available %></td>
+    <td><%= link_to 'Show', chatroom %></td>
+    <td><%= link_to 'Edit', edit_chatroom_path(chatroom) %></td>
+    <td><%= link_to 'Destroy', chatroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<ul>
+  <% @venues.each do |v| %>
+    <li> <%= link_to v.json["name"], new_chatroom_path(:venue_id => v.json["id"]) %> </li>
+  <% end -%>
+</ul>
+
+<br />
+
+<%= link_to 'New Chatroom', new_chatroom_path %>
