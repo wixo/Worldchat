@@ -40,7 +40,19 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(params[:message])
+    @message    = Message.new(params[:message])
+    chatroom_id = @message.chatroom_id
+
+    Pusher.app_id = '31936'
+    Pusher.key    = '97fede60c81562795cb1'
+    Pusher.secret = 'c8313be2ede19b11b39f'
+    params        = {:chatroom_id => @message.chatroom_id,
+                     :user_name   => @message.user.name,
+                     :content     => @message.content,
+                     :created_at  => DateTime.now
+                    }
+
+    Pusher.trigger('worldchat',"wc:create:#{chatroom_id}", params)
 
     respond_to do |format|
       if @message.save

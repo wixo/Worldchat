@@ -1,3 +1,81 @@
 // Place all the styles related to the chatrooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.venue {
+	display: inline-block;
+	height: 250px;
+	list-style: none;
+	margin: 25px;
+	vertical-align: top;
+	width: 200px;
+}
+.venue-map {
+	background-color: #eee;
+	background-repeat: no-repeat;
+	border: 1px solid #ccc;
+	border-radius: 10px 10px 0 0;
+	height: 250px;
+}
+.venue-title {
+	display: block;
+	font-size: 2em;
+	left: 4px;
+	height: 40px;
+	position: relative;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	top: 206px;
+}
+
+/*chatroom*/
+
+.chatroom {
+	height: 380px;
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+}
+.message {
+	background: #ddd;
+	display: block;
+	font-size: 1.075em;
+	height: 30px;
+	list-style: none;
+}
+.message .author {
+	background: #558BC4;
+	height: 30px;
+	padding: 7px 7px 0 0;
+	text-align: right;
+	width: 120px;
+}
+.message:nth-child(odd) .author {
+	background: #82A9D3;
+}
+.message .content {
+	background: #8BAA3B;
+	height: 30px;
+	padding: 7px 0 0 4px;
+	width: 600px;
+}
+.message:nth-child(odd) .content {
+	background: #A8C65B;
+}
+.message .date-time {
+	background: #97b940;
+	height: 30px;
+	padding: 7px 0 0 0;
+	text-align: right;
+	width: 209px;
+}
+.message:nth-child(odd) .date-time {
+	background: #b0cb6b;
+}
+
+/*message form*/
+.message-form-container {
+	position: relative;
+	top: 30px;
+}

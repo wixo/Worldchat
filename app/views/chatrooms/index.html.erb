@@ -1,6 +1,4 @@
-<h1>Listing chatrooms</h1>
-
-<table>
+<!-- <table>
   <tr>
     <th>Venue</th>
     <th>Name</th>
@@ -20,14 +18,24 @@
     <td><%= link_to 'Destroy', chatroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
-</table>
-
-<ul>
-  <% @venues.each do |v| %>
-    <li> <%= link_to v.json["name"], new_chatroom_path(:venue_id => v.json["id"]) %> </li>
+</table> -->
+<div class="page venues-page container">
+  <h1>Chatrooms Near You</h1>
+  <% if @venues %>
+    <ul class="venues">
+      <% @venues.each do |v| %>
+        <li class="venue" data-ll="<%= v.json["location"]["lat"] %>,<%= v.json["location"]["lng"] %>" data-lat="<%= v.json["location"]["lat"] %>" data-long="<%= v.json["location"]["lng"] %>"> 
+          <%= link_to( @chatrooms.select{|c| c.venue_id == v.json["id"]}.present? ? chatroom_path(@chatrooms.select{|c| c.venue_id == v.json["id"]}[0].id) : join_chatroom_path(v.json["id"]) ) do %>
+            <div class="venue-map" style="background-image:url(http://maps.googleapis.com/maps/api/staticmap?center=<%= v.json["location"]["lat"] %>,<%= v.json["location"]["lng"] %>&zoom=16&size=200x200&markers=color:red|<%= v.json["location"]["lat"] %>,<%= v.json["location"]["lng"] %>|&sensor=false&key=AIzaSyAQSE-ZLv23qrAuKzlFohr23xUQaqgC4-I);">
+              <div class="venue-title"> <%= v.name %> </div>
+            </div>
+          <% end -%> 
+        </li>
+      <% end -%>
+    </ul>
   <% end -%>
-</ul>
+</div>
 
-<br />
-
+<!-- 
 <%= link_to 'New Chatroom', new_chatroom_path %>
+ -->

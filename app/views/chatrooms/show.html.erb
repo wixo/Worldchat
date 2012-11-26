@@ -1,20 +1,20 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Venue:</b>
-  <%= @chatroom.venue_id %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @chatroom.name %>
-</p>
-
-<p>
-  <b>Is available:</b>
-  <%= @chatroom.is_available %>
-</p>
-
-
-<%= link_to 'Edit', edit_chatroom_path(@chatroom) %> |
-<%= link_to 'Back', chatrooms_path %>
+<div class="page chatroom-page container">
+	<div class="chatroom-title">
+		<h1><%= @chatroom.name %> Chatroom</h1>
+	</div>
+	<div class="chatroom-container">
+		<% if @messages %>
+			<ul class="chatroom" data-venue="<%=@chatroom.id%>">
+				<% @messages.reverse.each do |m| %>
+					<li class="message">
+							<div class="author chatroom-part part"><%= m.user.name %> </div><div class="content chatroom-part part"><%= m.content %></div><time class="date-time chatroom-part part timeago" datetime="<%= m.created_at %>"> <%= time_ago_in_words(m.created_at) %> ago</time> 
+						</li>
+				<% end -%>
+			</ul>
+		<% end -%>
+	</div>
+	<div class="message-form-container">
+		<%= render 'message_form' %>
+	</div>
+</div>

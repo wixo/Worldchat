@@ -2,14 +2,14 @@ Worldchat::Application.routes.draw do
   get "home/index"
 
   resources :messages
-
-
   resources :chatrooms
-
-
   resources :users
 
+  match "/chatrooms/join/:venue_id" => "chatrooms#join", :as =>"join_chatroom"
+
   root to: "home#index"
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

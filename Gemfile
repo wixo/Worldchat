@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'typhoeus',   '~> 0.4.2'
 gem 'quimby'
 gem 'pusher'
+gem 'browser'
 gem 'crack'
 
 # Gems used only for assets and not required
