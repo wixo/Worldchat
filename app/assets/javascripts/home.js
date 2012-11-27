@@ -10,16 +10,36 @@
 	})();
 
 
-var $geolocate = $('a.geolocate');
+var $geolocate = $('a.geolocate'),
+    $alert     = $('div.alert'),
+    $cookLat   = $.cookie('worldchat_lat'),
+    $cookLong  = $.cookie('worldchat_long');
 
-if ( navigator.geolocation ) {
-	navigator.geolocation.getCurrentPosition(function( p ) {
-		$geolocate.length && 
-			(function(){
-				$geolocate.slideDown();
-				$geolocate.attr('href','/chatrooms?lat='+p.coords.latitude+'&long='+p.coords.longitude);
-			})();
-	});
+if( !!$cookLat && !!$cookLong ) {
+
+	CW.lat || (CW.lat = $cookLat);
+	CW.lng || (CW.lng = $cookLong);
+	$alert.length && $alert.hide();
+	$geolocate.attr('href','/chatrooms?lat='+CW.lat+'&long='+CW.lng);
+	$geolocate.slideDown();
+
 } else {
-	error('not supported');
+
+	if( navigator.geolocation ) {
+		navigator.geolocation.getCurrentPosition(function( p ) {
+			$geolocate.length && 
+				(function(){
+					$.cookie('worldchat_lat',p.coords.latitude);
+					$.cookie('worldchat_long',p.coords.longitude);
+
+					$alert.length && $alert.fadeOut();
+
+					$geolocate.attr('href','/chatrooms?lat='+p.coords.latitude+'&long='+p.coords.longitude);
+					$geolocate.slideDown();
+				})();
+		});
+	} else {
+		error('not supported');
+	}
+
 }

@@ -3,6 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+	html, body {
+		height: 100%;
+	}
+
+	.index-page {
+		height: 100%;
+		width: 100%;
+	}
+
 .cta {
 	background-image: url(home-bg.jpg);
 	background-position: center;
@@ -10,7 +19,7 @@
 	-moz-background-size: cover;
 	background-size: cover;
 	color: white;
-	height: 480px;
+	height: 100%;
 	text-shadow: 1px 1px 1px #333;
 }
 .cta h1 {
@@ -19,4 +28,21 @@
 .cta .cta-container {
 	top: 40px;
 	position: relative;
+}
+
+@media screen and (max-device-width: 480px) {
+
+	.cta {
+		height: 100%;
+		margin: 0 auto 0;
+		padding: 0;
+		text-align: center;
+		width: 100%;
+	}
+
+	.cta .cta-container {
+		top: 8%;
+		position: relative;
+	}
+
 }

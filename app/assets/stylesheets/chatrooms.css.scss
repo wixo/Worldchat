@@ -79,3 +79,82 @@
 	position: relative;
 	top: 30px;
 }
+
+@media screen and (max-device-width: 480px) {
+
+	.venues-page {
+		text-align: center;
+		width: 100%;
+	}
+
+	.venues-page h1 {
+		font-size: 30px;
+	}
+
+	.venues {
+		margin: 0;
+		padding: 0;
+	}
+
+	.venue {
+		padding: 0;
+		width: 300px;
+	}
+
+	.venue-map {
+		background-position: center;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		background-size: cover;
+	}
+
+	.venue-title {
+		background: #eee;
+		left: 0;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		top: 210px;
+	}
+
+	/*chatroom*/
+
+	.chatroom-page {
+		width: 100%;
+	}
+
+	.chatroom-title {
+		height: 60px;
+		overflow: hidden;
+		width: 100%;
+	}
+
+	.chatroom {
+		height: 320px;
+	}
+
+	.chatroom-title h1{
+		font-size: 30px;
+	}
+
+	.message .author {
+		width: 30%;
+	}
+
+	.message .content {
+		width: 45%;
+	}
+
+	.message .date-time {
+		overflow: hidden;
+		width: 20%;
+	}
+
+	.message-input input {
+		width: 80%;
+	}
+	
+	.send {
+		visibility: hidden;
+	}
+}

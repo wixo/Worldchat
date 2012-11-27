@@ -39,7 +39,9 @@ class ChatroomsController < ApplicationController
         @user_name = cookies[:worldchat_login]
         @user = User.find_by_name(@user_name)
     else
-        @user_name = "#{@ua[2]}-#{@ua[0]}-#{User.last.id+1}"     
+        @user_name = "#{@ua[2]}-#{@ua[0]}-#{User.last.id+1}"
+        # logger.debug "NAME"
+        # logger.debug new_user_name        
         @user = User.create(:name => @user_name,
                             :venue_id => 1,
                             :foursquare_id => 1
